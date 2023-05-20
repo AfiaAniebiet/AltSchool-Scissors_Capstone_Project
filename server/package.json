@@ -1,11 +1,12 @@
 {
-  "name": "server",
+  "name": "capstone_scissors_project",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "nodemon dist/server.js"
+    "dev": "nodemon dist/server.js",
+    "build": "tsc"
   },
   "keywords": [
     "Node.js",
@@ -17,11 +18,12 @@
   "license": "MIT",
   "devDependencies": {
     "@types/config": "^3.3.0",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
     "@types/express-rate-limit": "^6.0.0",
-    "@types/nanoid": "^3.0.0",
     "@types/node": "^20.1.7",
     "@types/shortid": "^0.0.29",
+    "@types/valid-url": "^1.0.4",
     "@types/yup": "^0.32.0",
     "jest": "^29.5.0",
     "nodemon": "^2.0.22",
@@ -30,12 +32,13 @@
   "dependencies": {
     "config": "^3.3.9",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "express-rate-limit": "^6.7.0",
     "mongoose": "^7.1.1",
-    "nanoid": "^4.0.2",
     "shortid": "^2.2.16",
+    "valid-url": "^1.0.9",
     "yup": "^1.1.1"
   }
 }
