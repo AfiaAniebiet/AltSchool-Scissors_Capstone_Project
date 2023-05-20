@@ -4,14 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const nanoid_1 = require("nanoid");
-const nanoid = (0, nanoid_1.customAlphabet)('abcdefghijklmnopqrstuvwxyz0987654321', 6);
+const shortid_1 = __importDefault(require("shortid"));
 const shortIdSchema = new mongoose_1.default.Schema({
     shortId: {
         type: String,
         unique: true,
         required: true,
-        default: () => nanoid,
+        default: () => shortid_1.default,
     },
     longUrl: {
         type: String,
@@ -20,3 +19,4 @@ const shortIdSchema = new mongoose_1.default.Schema({
 });
 const shortUrl = mongoose_1.default.model('shortUrl', shortIdSchema);
 exports.default = shortUrl;
+//# sourceMappingURL=shortUrl.model.js.map
