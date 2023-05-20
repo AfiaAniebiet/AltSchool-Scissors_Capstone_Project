@@ -13,18 +13,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const config_1 = __importDefault(require("config"));
-function connectDB() {
+const default_1 = __importDefault(require("../config/default"));
+function mongodb_connection() {
     return __awaiter(this, void 0, void 0, function* () {
         mongoose_1.default.set('strictQuery', false);
-        const mongo_uri = config_1.default.get('mongo_uri');
-        yield mongoose_1.default.connect(mongo_uri);
-        mongoose_1.default.connection.on('connected', () => {
-            console.log('Connection to database established');
-        });
-        mongoose_1.default.connection.on('error', () => {
-            console.log('Oops! Database connection failed.');
+        const mongo_uri = default_1.default.mongo_uri;
+        yield mongoose_1.default
+            .connect(mongo_uri)
+            .then((result) => {
+            console.log('Connection to database established!');
+        })
+            .catch((error) => {
+            console.log('Oops! Failed to connect to database.');
+            process.exit(1);
         });
     });
 }
-exports.default = connectDB;
+exports.default = mongodb_connection;
+//# sourceMappingURL=database.js.map
