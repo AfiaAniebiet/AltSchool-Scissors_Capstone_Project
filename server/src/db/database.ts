@@ -1,18 +1,19 @@
 import mongoose from 'mongoose';
-import config from 'config';
+import config from '../config/default';
 
-async function connectDB() {
+async function mongodb_connection() {
   mongoose.set('strictQuery', false);
-  const mongo_uri = config.get('mongo_uri') as string;
-  await mongoose.connect(mongo_uri);
 
-  mongoose.connection.on('connected', () => {
-    console.log('Connection to database established');
-  });
-
-  mongoose.connection.on('error', () => {
-    console.log('Oops! Database connection failed.');
-  });
+  const mongo_uri = config.mongo_uri as string;
+  await mongoose
+    .connect(mongo_uri)
+    .then((result) => {
+      console.log('Connection to database established!');
+    })
+    .catch((error) => {
+      console.log('Oops! Failed to connect to database.');
+      process.exit(1);
+    });
 }
 
-export default connectDB;
+export default mongodb_connection;
