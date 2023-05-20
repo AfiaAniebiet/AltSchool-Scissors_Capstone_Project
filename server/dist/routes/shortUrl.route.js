@@ -10,3 +10,4 @@ const shortUrl_controller_1 = __importDefault(require("../controllers/shortUrl.c
 router.get('/api/url', shortUrl_controller_1.default.getIndexPage);
 router.post('/api/url', shortUrl_controller_1.default.makeShortUrl);
 exports.default = router;
+//# sourceMappingURL=shortUrl.route.js.map
