@@ -2,13 +2,15 @@
 import http from 'http';
 
 import app from './app';
-import config from 'config';
+import config from './config/default';
+// import { config } from 'dotenv';
+import mongodb_connection from './db/database';
 
-// const PORT = process.env.PORT || 8000;
-const PORT = config.get('PORT');
+const PORT = config.PORT as number;
 
 const server = http.createServer(app);
 
-server.listen(PORT, () => {
+server.listen(PORT, (): void => {
+  mongodb_connection();
   console.log(`server running on http://localhost:${PORT}`);
 });
