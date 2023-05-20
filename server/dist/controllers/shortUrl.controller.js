@@ -28,3 +28,4 @@ exports.default = {
     makeShortUrl,
     getIndexPage,
 };
+//# sourceMappingURL=shortUrl.controller.js.map
