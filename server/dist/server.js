@@ -6,10 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // importing http module
 const http_1 = __importDefault(require("http"));
 const app_1 = __importDefault(require("./app"));
-const config_1 = __importDefault(require("config"));
-// const PORT = process.env.PORT || 8000;
-const PORT = config_1.default.get('PORT');
+const default_1 = __importDefault(require("./config/default"));
+// import { config } from 'dotenv';
+const database_1 = __importDefault(require("./db/database"));
+const PORT = default_1.default.PORT;
 const server = http_1.default.createServer(app_1.default);
 server.listen(PORT, () => {
+    (0, database_1.default)();
     console.log(`server running on http://localhost:${PORT}`);
 });
+//# sourceMappingURL=server.js.map
