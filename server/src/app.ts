@@ -1,7 +1,6 @@
 // importing express package
 import express from 'express';
 import 'express-async-errors';
-import db from './db/database';
 
 // creating app from express function
 const app = express();
@@ -14,8 +13,5 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(shortIDRoute);
-
-// executing database
-db();
 
 export default app;
